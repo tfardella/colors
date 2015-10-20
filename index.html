@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- meta name="viewport" content="width=device-width, initial-scale=1" -->
+    <title>Colors</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap-theme.css">
+
+    <link rel="stylesheet" href="css/spectrum.css">
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+  </head>
+  <body>
+    <div class="container">
+    
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Color Palette Creator</a>
+
+              <p class="navbar-text small bottom">Choose and arrange colors to create your palette</p>
+
+            </div>
+            <div class="navbar-collapse collapse">
+          </div><!--/.navbar-collapse -->
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="jumbotron">
+            <br />
+            <h4>Palette</h4>
+            <p class="info small">Drop colors here to add to palette. Drag to re-order. Drag to trash to remove</p>
+
+            <ul id="masterPalette" class="colors"></ul>
+            <div>
+              <button type="button" class="btn btn-default" data-toggle="modal" data-target="#clearPaletteModal" title="Clear the currently loaded palette">Clear</button>
+              <button type="button" class="btn btn-default" data-toggle="modal" data-target="#newPaletteModal" title="Create a new palette">New</button>
+              <button type="button" class="btn btn-default" data-toggle="modal" data-target="#loadPaletteModal" title="Create a new palette">Load</button>
+              <button type="button" class="btn btn-default" data-toggle="modal" data-target="#savePaletteModal" title="Save the current palette">Save</button>
+
+              <div id="trash" title="Drag palette items here to discard"></div>
+            </div>
+          </div>
+        </div>
+
+       <div class="container">
+          <!-- Example row of columns -->
+          <div class="row">
+            <div class="col-md-4">
+              <h4>Tools</h4>
+              <p class="info small">Change colors. Copy output.</p>
+              <hr />
+
+              <div class="row">
+              
+                <div class="col-md-2">
+                  <input type="color" id="cpick1" />
+                </div>
+
+                <div class="col-md-6">
+                  <div>Output as: </div>
+                  <div>
+                    <input type="radio" name="textOutputType" value="hex"><label for="textOutputType">Hex</label>
+                    &nbsp;
+                    <input type="radio" name="textOutputType" value="rgb"><label for="textOutputType">RGB</label>
+                  </div>
+
+                  <textarea name="paletteTextArea" cols="30" rows="15"></textarea>
+
+                </div>
+
+                <div class="col-md-4">
+                  <!-- div id="trash" title="Drag items here to discard"></div -->
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="col-md-8">
+              <h4>Colors</h4>
+              <p class="info small">Drag color to palette or drag to main</p>
+              <hr />
+
+              <div class="row">
+
+                <div class="col-md-5 top alignTop">
+
+                    <div class="colorSection inline">
+                      <h5>Main Color</h5>
+                      <ul id="mainColor" class='colors'>
+                        <li>
+                          <span id="paletteColor" class="color drop"></span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="colorSection inline">
+                      <h5>Complement</h5>
+                      <ul class='colors'>
+                        <li>
+                          <span id="complement" class="color small drop"></span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="colorSection inline">
+                      <h5>Triads</h5>
+                      <ul class='colors'>
+                        <li>
+                          <span id="triad2" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="triad3" class="color small drop"></span>
+                        </li>
+                      </ul>
+                    </div>
+
+                </div>
+
+                <div class="col-md-7">
+
+                    <div class="colorSection">
+                      <h5>Hue Set</h5>
+                      <ul class='colors'>
+                        <li>
+                          <span id="hs0" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="hs1" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="hs2" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="hs3" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="hs4" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="hs5" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="hs6" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="hs7" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="hs8" class="color small drop"></span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div class="colorSection">
+                      <h5>Tint Set</h5>
+                      <ul class='colors'>
+                        <li>
+                          <span id="tint0" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="tint1" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="tint2" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="tint3" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="tint4" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="tint5" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="tint6" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="tint7" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="tint8" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="tint9" class="color small drop"></span>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    <div class="colorSection">
+                      <h5>Shade Set</h5>
+                      <ul class='colors'>
+                        <li>
+                          <span id="shade0" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="shade1" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="shade2" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="shade3" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="shade4" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="shade5" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="shade6" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="shade7" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="shade8" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="shade9" class="color small drop"></span>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    <div class="colorSection">
+                      <h5>Tone Set</h5>
+                      <ul class='colors'>
+                        <li>
+                          <span id="tone0" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="tone1" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="tone2" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="tone3" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="tone4" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="tone5" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="tone6" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="tone7" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="tone8" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="tone9" class="color small drop"></span>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    <div class="colorSection">
+                      <h5>Blend Set</h5>
+                      <ul class='colors'>
+                        <li>
+                          <span id="blnd0" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="blnd1" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="blnd2" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="blnd3" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="blnd4" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="blnd5" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="blnd6" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="blnd7" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="blnd8" class="color small drop"></span>
+                        </li>
+                        <li>
+                          <span id="blnd9" class="color small drop"></span>
+                        </li>
+                      </ul>
+                      <div class="info small right">Drop blend color on right most box &#8593; &nbsp;</div>
+                    </div>
+                    
+                  </div>
+
+                </div>
+
+            </div>
+
+          </div>
+
+          <hr>
+
+          <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+            <div class="container">
+              <p class="navbar-text small bottom" right>© Tony Fardella 2015</p>
+            </div>
+          </nav>
+
+        </div>
+      </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="clearPaletteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Clear Palette</h4>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to clear the current palette?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" id="clearPaletteYes-btn" class="btn btn-primary">Yes</button>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="modal fade" id="newPaletteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">New Palette</h4>
+        </div>
+        <div class="modal-body">
+          <label for="newPaletteName">Name of new palette:</label>
+          <input type="text" id="newPaletteName" style="width: 400px;" />
+
+          <br /><br />
+          <input type="checkbox" name="useDefault" /><label class="right" for="useDefault">Use default colors</label>
+
+          <br /><br />
+          <div class="alert alert-info">Not Yet Implemented!</div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" id="clearPaletteYes-btn" class="btn btn-primary">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="loadPaletteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Load Palette</h4>
+        </div>
+        <div class="modal-body">
+          <label for="">Choose a palette to load:</label>
+          <select name="choosePalette" id="choosePalette">
+            <option value="p1">Palette #1</option>
+            <option value="p2">Palette #2</option>
+            <option value="p2">Palette #3</option>
+            <option value="p4">Palette #4</option>
+          </select>
+
+          <br /><br />
+          <div class="alert alert-info">Not Yet Implemented!</div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" id="clearPaletteYes-btn" class="btn btn-primary">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="savePaletteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Save Palette</h4>
+        </div>
+        <div class="modal-body">
+          <label for="newPaletteName">Name:</label>
+          <input type="text" name="newPaletteName" id="newPaletteName" style="width: 440px;" />
+
+          <br /><br />
+          <div class="alert alert-info">Not Yet Implemented!</div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" id="clearPaletteYes-btn" class="btn btn-primary">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    
+    <script src="js/lib/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/lib/spectrum.js"></script>
+    <script src="js/lib/pusher.color.min.js"></script>
+
+    <script src="js/colors.js" ></script>
+
+  </body>
+</html>

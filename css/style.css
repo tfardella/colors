@@ -1,0 +1,138 @@
+body {
+	background-color: #ffffff;
+	padding: 0px 0px 40px 0px;
+}
+
+label {
+	font-weight: normal;
+	padding-right: 6px;
+}
+
+label.right {
+	padding: 0 6px;
+}
+
+hr {
+	margin: 10px 0;
+}
+
+h1, h2, h3,  h4, h5, h6 {
+	margin: .4em .2em .2em .2em;
+	line-height: 1.1em;
+}
+
+.info.small {
+	color: #aaaaaa;
+	font-size: 80%;
+	margin: 4px;
+	padding: 0;
+}
+
+ul.colors { 
+	margin: 0;
+	padding: 0;
+}
+
+ul.colors li {
+	display: inline-block;
+}
+
+#mainContainer {
+	margin: 0 auto;
+	padding: 10px;
+	border: 2px solid #e4e0d8;
+	width: 950px;
+	min-width: 850px;
+}
+
+#masterPalette {
+	overflow: auto;
+	white-space: nowrap;
+	height: 72px;
+	width: 98%;
+	border: 2px solid #e4e0d8;
+	padding: 6px;
+	margin-bottom: 10px;
+}
+
+.left {
+	text-align: left;
+}
+
+.center {
+	text-align: center;
+}
+
+.right {
+	text-align: right;
+}
+
+.inline {
+	display: inline-block;
+}
+
+.section {
+	margin: 10px 0;
+	padding: 0;
+	width: 100%;
+	vertical-align: top;
+}
+
+.color {
+	text-align: left;
+	width: 40px;
+	height: 50px;
+	list-style: none;
+	border: 2px solid #e4e0d8;
+	margin: 2px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.color:hover {
+	border-color: #c4c0b8
+}
+
+.color.small {
+	width: 25px;
+	height: 30px;
+}
+
+.colorSection {
+	padding: 4px 8px;
+	margin: 0 0 10px 0;
+	border: 2px solid #e4e0d8;
+	vertical-align: top;
+}
+
+#palette_color {
+	margin-left: 16px;
+	display: inline-block;
+}
+
+#tools span, #tools textarea, #tools input, #tools label {
+	vertical-align: top;
+}
+
+#tools > div {
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 8px;
+}
+
+#trash {
+	background: #ffffff url( "../images/glyphicons_016_bin.png" ) no-repeat left top;
+	width: 28px;
+	height: 28px;
+	margin-left: 16px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#paletteText {
+	margin-top: 10px;
+	height: 220px;
+	width: 100%;
+	overflow: scroll;
+}
+
